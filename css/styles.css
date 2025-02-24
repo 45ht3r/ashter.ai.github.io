@@ -228,7 +228,22 @@ footer {
     text-align: center;
     padding: 20px 0;
 }
+.logo img {
+    height: 40px;
+    margin-right: 10px;
+}
 
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.team-photo {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+}
 /* Responsive Design */
 @media (max-width: 768px) {
     .feature, .solution-feature, .team-member {
