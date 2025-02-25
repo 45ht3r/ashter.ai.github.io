@@ -193,7 +193,9 @@ section h2 {
     width: 200px;
     height: 200px;
     border-radius: 50%;
-    object-fit: cover;
+    object-position: top;
+    /*object-fit: cover; /* Prevents stretching * - previous version/
+    object-fit: contain; /* Prevents cropping */
 }
 
 /* Contact Section */
