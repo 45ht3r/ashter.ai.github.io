@@ -6,6 +6,7 @@
     <title>Ashter - Smart Pet Care Solutions</title>
     <link rel="stylesheet" href="css/styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="images/logo-2ndV.jpg" type="image/x-icon">
 </head>
 <body>
     <header>
@@ -93,6 +94,7 @@
         <div class="container">
             <h2>Join Our Journey</h2>
             <p>We're looking for beta testers, partners, and team members. Reach out to learn more!</p>
+            
             <div class="form-success" id="formSuccess">
                 Thank you for contacting us! We'll get back to you shortly.
             </div>
@@ -100,7 +102,7 @@
                 Oops! There was a problem submitting your form. Please try again.
             </div>
             
-            <form action="https://formspree.io/f/mzzdldlz" method="POST">
+            <form action="https://formspree.io/f/mzzdldlz" method="POST" id="contactForm">
                 <input type="email" name="email" placeholder="Your email address" required>
                 <select name="interest">
                     <option value="" disabled selected>I'm interested in...</option>
@@ -117,73 +119,56 @@
         </div>
     </section>
 
-    
-<!-- 
-    <section id="contact" class="contact">
-        <div class="container">
-            <h2>Join Our Journey</h2>
-            <p>We're looking for beta testers, partners, and team members. Reach out to learn more!</p>
-            <form>
-                <input type="email" placeholder="Your email address" required>
-                <select>
-                    <option value="" disabled selected>I'm interested in...</option>
-                    <option value="beta">Becoming a beta tester</option>
-                    <option value="partnership">Partnership opportunities</option>
-                    <option value="join">Joining the team</option>
-                    <option value="other">Other inquiry</option>
-                </select>
-                <textarea placeholder="Tell us more about your interest"></textarea>
-                <button type="submit" class="btn">Submit</button>
-            </form>
-        </div>
-    </section> -->
-
     <footer>
         <div class="container">
             <p>&copy; 2025 Ashter. All rights reserved.</p>
         </div>
     </footer>
-    <script>
-    // Form submission handling
-    const contactForm = document.querySelector('#contact form');
-    const formSuccess = document.getElementById('formSuccess');
-    const formError = document.getElementById('formError');
 
-    if (contactForm) {
-        contactForm.addEventListener('submit', function(event) {
-            event.preventDefault();
-            
-            const formData = new FormData(contactForm);
-            
-            fetch(contactForm.action, {
-                method: 'POST',
-                body: formData,
-                headers: {
-                    'Accept': 'application/json'
-                }
-            })
-            .then(response => {
-                if (response.ok) {
-                    formSuccess.style.display = 'block';
-                    contactForm.reset();
-                    // Hide success message after 5 seconds
-                    setTimeout(() => {
-                        formSuccess.style.display = 'none';
-                    }, 5000);
-                } else {
-                    throw new Error('Form submission failed');
-                }
-            })
-            .catch(error => {
-                formError.style.display = 'block';
-                // Hide error message after 5 seconds
-                setTimeout(() => {
-                    formError.style.display = 'none';
-                }, 5000);
-                console.error('Error:', error);
-            });
+    <script>
+        // Form submission handling
+        document.addEventListener('DOMContentLoaded', function() {
+            const contactForm = document.getElementById('contactForm');
+            const formSuccess = document.getElementById('formSuccess');
+            const formError = document.getElementById('formError');
+
+            if (contactForm) {
+                contactForm.addEventListener('submit', function(event) {
+                    event.preventDefault();
+                    
+                    const formData = new FormData(contactForm);
+                    
+                    fetch(contactForm.action, {
+                        method: 'POST',
+                        body: formData,
+                        headers: {
+                            'Accept': 'application/json'
+                        }
+                    })
+                    .then(response => {
+                        if (response.ok) {
+                            formSuccess.style.display = 'block';
+                            contactForm.reset();
+                            // Hide success message after 5 seconds
+                            setTimeout(() => {
+                                formSuccess.style.display = 'none';
+                            }, 5000);
+                            return response.json();
+                        } else {
+                            throw new Error('Form submission failed');
+                        }
+                    })
+                    .catch(error => {
+                        formError.style.display = 'block';
+                        // Hide error message after 5 seconds
+                        setTimeout(() => {
+                            formError.style.display = 'none';
+                        }, 5000);
+                        console.error('Error:', error);
+                    });
+                });
+            }
         });
-    }
-</script>
+    </script>
 </body>
 </html>
