@@ -244,6 +244,27 @@ footer {
     border-radius: 50%;
     object-fit: cover;
 }
+
+/* Form submission feedback */
+.form-success {
+    background-color: #d4edda;
+    color: #155724;
+    padding: 15px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    display: none;
+}
+
+.form-error {
+    background-color: #f8d7da;
+    color: #721c24;
+    padding: 15px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    display: none;
+}
+
+
 /* Responsive Design */
 @media (max-width: 768px) {
     .feature, .solution-feature, .team-member {
