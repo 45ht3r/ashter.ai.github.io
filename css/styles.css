@@ -98,9 +98,25 @@ nav ul li a:hover {
 }
 
 .btn:hover {
-    background: #f1f1f1;
-    transform: translateY(-3px);
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.btn-primary {
+    background: #e74c3c;
+    color: #fff;
+    margin-left: 15px;
+}
+
+.btn-primary:hover {
+    background: #c0392b;
+}
+
+.hero-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
 }
 
 /* Sections */
@@ -196,6 +212,75 @@ section h2 {
     object-position: top;
     /*object-fit: cover; /* Prevents stretching * - previous version/
     object-fit: contain; /* Prevents cropping */
+}
+
+/* Team Slideshow */
+.team-slideshow {
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.slideshow-container {
+    position: relative;
+    height: 400px;
+    overflow: hidden;
+}
+
+.slide {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.slide.active {
+    opacity: 1;
+}
+
+.slideshow-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+    gap: 20px;
+}
+
+.prev-btn, .next-btn {
+    background: #3498db;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 18px;
+    transition: background 0.3s;
+}
+
+.prev-btn:hover, .next-btn:hover {
+    background: #2980b9;
+}
+
+.dots {
+    display: flex;
+    gap: 10px;
+}
+
+.dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #ccc;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.dot.active, .dot:hover {
+    background: #3498db;
 }
 
 /* Contact Section */

@@ -30,7 +30,10 @@
         <div class="container">
             <h1>Transforming Pet Care Through Technology</h1>
             <p>Advanced waste management and health monitoring for the modern pet owner</p>
-            <a href="#contact" class="btn">Join Our Beta</a>
+            <div class="hero-buttons">
+                <a href="#contact" class="btn">Join Our Beta</a>
+                <a href="https://forms.gle/pgyJx3k1eRPNtMhS6" target="_blank" rel="noopener" class="btn btn-primary">Pre-Order Now</a>
+            </div>
         </div>
     </section>
 
@@ -78,14 +81,42 @@
     <section id="team" class="team">
         <div class="container">
             <h2>Our Team</h2>
-            <div class="team-members">
-                <div class="team-member">
-                    <img src="images/Ash-Ilaty.jpg" alt="Ash Ilaty" class="team-photo">
-                    <h3>Ash Ilaty</h3>
-                    <p>Founder & CEO</p>
-                    <p>Computational Science, SDSU</p>
+            <div class="team-slideshow">
+                <div class="slideshow-container">
+                    <div class="slide active">
+                        <div class="team-member">
+                            <img src="images/Ash-Ilaty.jpg" alt="Ash Ilaty" class="team-photo">
+                            <h3>Ash Ilaty</h3>
+                            <p>Founder & CEO</p>
+                            <p>Computational Science, SDSU</p>
+                        </div>
+                    </div>
+                    <div class="slide">
+                        <div class="team-member">
+                            <img src="images/Our Logo.jpg" alt="Ashter Logo" class="team-photo">
+                            <h3>Ashter</h3>
+                            <p>Innovation Team</p>
+                            <p>Smart Pet Care Solutions</p>
+                        </div>
+                    </div>
+                    <div class="slide">
+                        <div class="team-member">
+                            <img src="images/logo-2ndV.jpg" alt="Ashter Logo Variant" class="team-photo">
+                            <h3>Ashter</h3>
+                            <p>Technology Team</p>
+                            <p>AI-Powered Pet Care</p>
+                        </div>
+                    </div>
                 </div>
-                <!-- Add more team members as needed -->
+                <div class="slideshow-controls">
+                    <button class="prev-btn" onclick="changeSlide(-1)">❮</button>
+                    <div class="dots">
+                        <span class="dot active" onclick="currentSlide(1)"></span>
+                        <span class="dot" onclick="currentSlide(2)"></span>
+                        <span class="dot" onclick="currentSlide(3)"></span>
+                    </div>
+                    <button class="next-btn" onclick="changeSlide(1)">❯</button>
+                </div>
             </div>
         </div>
     </section>
@@ -104,7 +135,7 @@
             
             <form action="https://formspree.io/f/mzzdldlz" method="POST" id="contactForm">
                 <input type="email" name="email" placeholder="Your email address" required>
-                <select name="interest">
+                <select name="interest" aria-label="Select your area of interest">
                     <option value="" disabled selected>I'm interested in...</option>
                     <option value="beta">Becoming a beta tester</option>
                     <option value="partnership">Partnership opportunities</option>
@@ -169,6 +200,39 @@
                 });
             }
         });
+
+        // Slideshow functionality
+        let currentSlideIndex = 0;
+        const slides = document.querySelectorAll('.slide');
+        const dots = document.querySelectorAll('.dot');
+
+        function showSlide(n) {
+            // Hide all slides
+            slides.forEach(slide => slide.classList.remove('active'));
+            dots.forEach(dot => dot.classList.remove('active'));
+            
+            // Show current slide
+            if (n >= slides.length) currentSlideIndex = 0;
+            if (n < 0) currentSlideIndex = slides.length - 1;
+            
+            slides[currentSlideIndex].classList.add('active');
+            dots[currentSlideIndex].classList.add('active');
+        }
+
+        function changeSlide(n) {
+            currentSlideIndex += n;
+            showSlide(currentSlideIndex);
+        }
+
+        function currentSlide(n) {
+            currentSlideIndex = n - 1;
+            showSlide(currentSlideIndex);
+        }
+
+        // Auto-advance slides every 5 seconds
+        setInterval(() => {
+            changeSlide(1);
+        }, 5000);
     </script>
 </body>
 </html>
